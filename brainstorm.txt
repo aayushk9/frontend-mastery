@@ -35,3 +35,5 @@ HOW ARE EVENTS DISPLAYED IN THIS MANNER? // -
    be displayed so we do -> events.map ((event) => (<EventCard props and than assign each prop to event. whatever it should be)) -> in short we fetch events from server -> we create a type for events ->
    assign var of that type and assign those properties to that props for example -> title: event.title -> making sure we assign necessary data from backend to variable -> update local state with these 
    variable and than -> iterate state and asssign each prop to card component prop
+
+READING CODE 
