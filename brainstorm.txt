@@ -37,3 +37,221 @@ HOW ARE EVENTS DISPLAYED IN THIS MANNER? // -
    variable and than -> iterate state and asssign each prop to card component prop
 
 READING CODE 
+
+
+REVIST THIS
+
+JS fundamentals (must be muscle memory)
+
+You mentioned most of these — good sign.
+
+Language basics
+
+You should be effortless with:
+
+let, const, var (and why var is weird)
+
+Primitive types vs reference types
+
+Truthy / falsy
+
+== vs ===
+
+Loops (for, while, for...of, for...in)
+
+Functions:
+
+function declaration
+
+function expression
+
+arrow functions
+
+Parameters, default params, rest params
+
+If you ever hesitate here → revisit.
+
+2️⃣ Scope, closure, hoisting (VERY important)
+
+This is where junior → mid jumps happen.
+
+You must clearly understand:
+
+Lexical scope
+
+Block scope vs function scope
+
+Hoisting behavior of:
+
+var
+
+let / const
+
+functions
+
+Closures (this is huge)
+
+Example you should be comfortable explaining:
+
+function outer() {
+  let count = 0;
+  return function inner() {
+    count++;
+    return count;
+  };
+}
+
+
+If closures feel fuzzy → revisit hard.
+
+3️⃣ this and execution context
+
+Many people fake this — don’t.
+
+You should know:
+
+this in:
+
+normal functions
+
+arrow functions
+
+object methods
+
+classes
+
+call, apply, bind
+
+How this is decided at call time, not definition time
+
+4️⃣ Async JS (you’re already halfway there)
+
+You already understand architecture. Now make it coding-level strong.
+
+Must know:
+
+Call stack, event loop, microtask/macrotask ✅
+
+Promises:
+
+chaining
+
+error handling
+
+Promise.all, race, any, allSettled
+
+async / await
+
+Common async bugs:
+
+forgetting await
+
+running async in loops
+
+sequential vs parallel async
+
+This is non-negotiable for modern JS.
+
+5️⃣ Objects, prototypes, OOP (but don’t overdo it)
+
+Know this practically, not academically.
+
+Object creation
+
+Prototypes
+
+class syntax (which is just sugar)
+
+Inheritance basics
+
+When to use OOP vs simple functions
+
+You don’t need deep prototype chains — just clarity.
+
+6️⃣ Arrays & objects (real-world heavy usage)
+
+This is where daily coding lives.
+
+Be fluent with:
+
+map, filter, reduce
+
+find, some, every
+
+Spread operator (...)
+
+Destructuring
+
+Shallow vs deep copy
+
+Mutation vs immutability
+
+If you struggle with reduce, practice it.
+
+7️⃣ Error handling & edge cases
+
+Good engineers think about failure.
+
+Know:
+
+try / catch
+
+Error propagation in async code
+
+Custom errors
+
+Defensive checks (optional chaining, nullish coalescing)
+
+8️⃣ Environment knowledge (browser + Node.js)
+
+You already touched this — refine it.
+
+Browser
+
+DOM basics
+
+Events & bubbling
+
+Fetch API
+
+Storage (localStorage, sessionStorage)
+
+CORS (at high level)
+
+Node.js
+
+What Node.js is (JS runtime, V8 + libuv)
+
+process, fs, path
+
+CommonJS vs ES modules
+
+Event loop differences (high level)
+
+9️⃣ Performance & memory (often overlooked)
+
+Not deep, just awareness:
+
+Blocking the call stack
+
+Memory leaks (closures, listeners)
+
+When recursion is dangerous
+
+Big-O basics
+
+10️⃣ “Senior signal” topics (nice to have)
+
+These are bonus, not mandatory:
+
+Debounce vs throttle
+
+Polyfills
+
+Immutability patterns
+
+Functional programming ideas
+
+Web Workers (browser)
+
+Streams (Node)
