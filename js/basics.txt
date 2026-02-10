@@ -1,0 +1,79 @@
+var, const and let
+use let when you wanna update that variable after initializing, mostly used on Loops
+use const whenever you are storing something and need not update later and have strictness
+var (avoid, may cause errors in prod due to its nature (can update later, avoids referene erros if declared before initialization))
+
+=, == and ===
+ = is used for assigning
+ == for comparing after type conversationhistory
+ === to compare values as well as types
+
+
+ Primitive types and reference types
+
+ primitves are 
+ - string 
+ - number
+ - boolean
+ - null 
+ - undefined
+ - bigInt
+ - symbol
+
+reference types are
+ - Arrays
+ - object
+ - function
+ - date 
+ - map 
+ - set, etc
+
+
+ what is lexical scope?
+ lexical is where code is written, In javascript scope is declared on write time not run time, 
+
+ function outer() {
+  let a = 10;
+
+  function inner () {
+    console.log(a);
+  }
+ }
+
+ innder will display 10 because innder is calling variable which is defined, inner can access a because it’s lexically inside outer
+
+ REVERSE IS not possible
+ function outer() {
+    let a= 10;
+ }
+
+ function secondOuter() {
+    console.log(a)
+ }
+
+ we cannot access a inside second outer as it is calling a from sibling function which is not lexical
+
+ WHAT IS BLOCK SCOPE & FUNCTION SCOPE?
+
+ block scope means the code is not able to run because something is not letting it run/blocking such as
+
+ if(true) {
+    let a = 10;
+ }
+
+ console.log(a); // a is not lexcial and is defined and assigned in if {} and cannot be used outside if wann use outside define globally
+ and use wherever you want it will excape block scope as it is lexical globally
+ 
+ this is blocked because we are using let here which does not allow such expressions to run 
+ blocks = {} if, for, while, {}
+
+ FUNCTION SCOPED
+
+ if(true){
+    var x = 10
+ }
+
+ console.log(x);
+
+ this is will execute and log x as we are using var who nature does not support block scope in other way const/let support block scoping
+ This is why let/const fixed tons of JS footguns.
