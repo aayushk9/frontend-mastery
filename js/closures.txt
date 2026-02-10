@@ -1,0 +1,123 @@
+what is closure?
+A closure is created when a function is defined inside another function and the 
+inner function accesses variables from its outer lexical scope. Even after the 
+outer function finishes execution, those variables are not garbage collected 
+because the inner function still holds references to them. This preserved 
+lexical environment is called a closure
+
+breif overview: 
+✔ Closures are related to functions inside functions
+✔ Child function can access parent variables
+✔ This works even after the parent function has finished executing
+✔ Reason: the data is preserved, not destroyed
+
+Now the important corrections (this is the mid-level jump)
+❌ “Closures are initialized with the code”
+
+Not exactly.
+
+Scopes are created at code write time (lexical).
+Closures are formed at runtime when a function is created and captures variables.
+
+So:
+
+Lexical scope → decided when you write code
+Closure → happens when a function instance is created
+
+closures as a concept makes sense when we are having fn inside a fn, lets take a example
+const example = "im a constant var";
+
+function outerBonding(outerVariable) {
+    return function innerBoudning(innerVariable) {
+         console.log("outerBonding": outerVariable);
+         console.log("innerBoudning": innerVariable);
+    }
+}
+
+console.log("im logging myself");
+
+before understanding closures we need to understand about scopes, Scopes are created at code write time (lexical).when we define a variable ina global scope as js engineer
+we know that whatever we define globally (global scope) can be accessed inside the children (i.e anywhere in file) this is only applicable
+in javascript, in other programming languages this does not work like you set some variable globally and use it inside a children fn it will give 
+error of cannot access this specific variable
+
+so in js scoping is + point as whatver defiend in global scope is accesible, everthing inside a code snipet is scope such as example variable
+in above code is seperate scope, fn outerBonding is unique scope, innerBoudning is unique scope and log at end is seperate scope
+
+also we cannot access something defiend in a child function in a parent/sibling fn, so whetevr defiend in global scope is accesible anywhere
+but initialization of speciifc thing in children fn cannot be accessed by parent or sibling, this is all about scopes which specific scope
+can access what?
+
+lets jump back to closures with same code we defiend above
+
+function outerBonding(outerVariable) {
+    return function innerBoudning(innerVariable) {
+         console.log("outerBonding": outerVariable);
+         console.log("innerBoudning": innerVariable);
+    }
+}
+
+note: not only this is closure like calling fn inside closure but this works because of closures and scope, whenever we write code
+closures are created/scopes are created with them
+
+so we are able to access the argument of outerbondfing fn inside innerBoudning fn even when outerbonding has finished executing we can access its
+data as closures saves data of the fn executed earlier, so now when we go inside inner fn innerBonding we have access to outerBonding because closures
+jave saved data and we access from them
+
+function fetchFromServer(url, server) {
+    fetch(url).then(() => {
+     // receieve data
+     // convert to json
+     // push in some client state
+     // done
+     console.log(server)
+    })
+}
+
+as we see this is more of realistic example where we run fn inside fn, we are able to access the data from parent function 
+to child fn (server) because of closures
+
+function outer() {
+  let count = 0;
+
+  return function inner() {
+    count++;
+    return count;
+  };
+}
+
+What happens:
+
+outer() is called
+A new execution context is created
+count = 0 is created in outer’s scope
+inner function is created
+inner captures a reference to count
+outer() finishes execution
+Execution context is popped from stack
+
+🚨 BUT…
+
+count is not garbage collected
+Why?
+Because:
+inner still holds a reference to it
+JS engine sees: “someone still needs this”
+That retained lexical environment = closure
+
+Scope is a region where variables are accessible.
+
+In JS, scopes are created by:
+
+Global scope
+
+Function scope
+
+Block scope ({} with let/con
+
+
+THE CORE IDEA  
+
+when we a fn inside another fn whethever its justy being called or we are returing it closure will be created
+when we use var from outer fn which as been executes and popepd out and garbage collector comes and sees that inner function needs some 
+reference from the outer fn or parent fn fc keeps that refreernece so this precise lexcial environment is closure
