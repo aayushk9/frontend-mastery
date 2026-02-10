@@ -99,7 +99,7 @@ function outer() {
     count++;
     return count;
   };
-}
+}   
 
 
 If closures feel fuzzy → revisit hard.
@@ -255,3 +255,5 @@ Functional programming ideas
 Web Workers (browser)
 
 Streams (Node)
+
+callstack, web-apis, event loop, render queues, callback queues, microtask, macrotask
