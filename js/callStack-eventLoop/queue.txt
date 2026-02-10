@@ -1,0 +1,14 @@
+queue is where your completed async operatiosn stay until therui chance to go inside stack comes, so when we have code runnin
+in call stack and when any async operation is supposed to run js assigns it to web apis in browser adn call stack continues 
+to run the further code, so those web apis run and execute, so after execution they get redirected to stay inside queues
+so if multiple async operatiosn are running and after completion the need to stay inside queue until stack is empty
+
+so queue has 2 things render queue and callback queue
+
+so when multiple async operatiosna re completed and call stack is not empty we keep them in callback queue and once 
+call stack is empty we move one async operation inside render queue and than to stack so again stack is smpety we
+move one async from callback to queue and tahn to call stack, the goes on, so we should not write slop asyn code which might
+slow the executiuons
+
+
+event loop assigns micrortask first to stack adn than macro

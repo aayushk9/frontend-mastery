@@ -1,0 +1,5 @@
+Event loop needs to only work when these 2 conditions are satisfied
+
+1) look into call stack and check if it is empty, if yes go to step 2
+2) if task queue does contain some async work which has been completed push that task in call stack and run it and after execution pop 
+from stack

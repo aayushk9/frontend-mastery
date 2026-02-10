@@ -1,0 +1,107 @@
+How does js work?
+first of all js is single threaded in nature. it is not async and does not execute multiple operations at once. what makes js async is its 
+runtime. js either runs in browsers or node js server. so whenever async operations come js is not solely async here it is async becuse when it is running inside
+bowsers it (js) assigns async work to browsers and executes code line by line, same goes for node.js it assigns async work and executes code
+line by line. 
+
+call stack?
+all the fn calls in js run inside call stack. call stack is resposible for pushing fn call in stack, executing and poping out of stack after
+execution. 
+
+function one () {
+    two();
+}
+
+function two () {
+    three();
+}
+
+function three () {
+    console.log("hola");
+}
+
+one();
+
+call stack visualizer
+
+>one gets called, pushed one in call stack(it calls two and pops one)
+>two gets called, pushed two in call stack (it calls three and pops two)
+>three gets called, pushe three to call stack(it logs hola and pops three)
+> after three is poped, stack has a rule whover called the popped fn gets the control after popped
+> so tow gets the control (pushed,called one and popped)
+> as popped control goes to one and it pops evenbually
+
+so in call stack fn gets called, executes, pops and contro, goes to the one who called the fn, stack calls happen
+in sequence, call stack is resposible for fn calls and its lifecycles (created, pushed in stack, executes, popped, control to the one who called
+popped fn)
+
+call stack never executes the async opertations, whenever some async operatiosn arrives inside fn it assigns it to web api calls and proceeds
+further
+
+example ->
+
+function  A () {
+    B();
+}
+
+function B () {
+    async operation calls
+}
+
+function C () {
+    console.log("C");
+}
+
+so in call stack 
+1) A called (pushed in stack, calls B and pops)
+2) B is async stack assigns this to web apis
+3) stack moves ahead
+4) c gets called and runs excutes and logs c and pops itself
+5) now if we had something more ahead like D or E fn it would have executed
+6) but as we ran everything insdie stack and nothing to execute inside call stack
+7) now we check in queue whether async operation is complete or not
+8) if complete add it to stack else wait until it executes
+
+
+Clean mental flow (final version)
+
+1) JS starts executing sync code → call stack
+
+2) If sync code calls async APIs:
+     They go to Web APIs
+
+3) When async work finishes:
+  Promise callbacks → microtask queue
+  Timers/events → macrotask queue
+
+4) Call stack becomes empty
+
+5) Event loop wakes up
+
+6) Event loop:
+
+ Pushes ALL microtasks to call stack (one by one)
+ Then pushes ONE macrotask
+
+7) That code executes on the call stack
+
+8) Repeat forever
+
+call stack is the main worker or engine which excutes js code (fn) one by one and pushes, executes and pops from stack and gives control 
+to whover called it. call stack does not run async operatiosn assigns to web api and the async operations are perfromed and run through
+microtask (imp ones such as fetch data) and macrotask (dom events, etc) after these are finise they stau in queue.
+
+event loop is called only when call stack becomes empty i.e when all sync fn are called, pushed , executes, popped
+
+event loop awakes and pushes micro to stack first and than macro and than runs code
+
+WHAT WE REVISED
+
+1) WHAT IS JS (SINGLE THREADED NATURE AND INTERPRETED)
+2) WHERE JS RUNS (IN NODE JS, BROWSER RUNTIME)
+3) JS DOES NOT PERFROM ASYN SOLELY ASSIGNS TO BROWSER WEB APIS OR NODE server
+4) JS CODE RUNS IN CALL STACK (FN CALLS, PUSH, EXECUTE, POP, NEXT AND IF NO NEXT CONTROL GOES TO THE ONE WHO CALLED LAST FN)
+5) CALL STACK ONLY RUNS JS FN CALLS (SYNC) ONE BY ONE AND ASSIGNS ASYNC TO WEB APIS
+6) ASYNC OPERATIOSN EXIST IN MICROTASK (IMP ONES) AND MACROTASK (LESS PRIORITY) AND AFTER COMPLETION STAY IN queue
+7) EVENT LOOPS IS AWAKES WHEN CALL STACK IS EMPTY (AFTER SYCN OPERATIOSN IS OVER) AND IT PUSHED MICRO FIRST IN STACK AND THAN MACROTASK
+8) CYCLE KEEPS REPEATING
